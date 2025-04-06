@@ -1,0 +1,201 @@
+doctype html
+html(lang="fa", dir="rtl")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title کنسول بازی سونی PlayStation 5 | چند
+    // Bootstrap RTL CSS
+    link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.rtl.min.css")
+    // Font Awesome
+    link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css")
+    link(rel="stylesheet", href="/css/product.css")
+  body
+    // Navbar
+    nav.navbar.navbar-expand-lg.torob-navbar.sticky-top.py-3
+      .container
+        a.torob-brand(href="#")
+          .logo
+            img(src="/img/707.png", alt="لوگو")
+          | چند ؟
+        button.navbar-toggler(type="button", data-bs-toggle="collapse", data-bs-target="#navbarContent")
+          span.navbar-toggler-icon
+        #navbarContent.collapse.navbar-collapse
+          .search-bar.mx-auto.mt-2.mt-lg-0
+            input.form-control(type="text", placeholder="نام کالا را وارد کنید...")
+            button.btn(style="background-color: var(--torob-primary); color: white;")
+              i.fas.fa-search
+          .d-flex.align-items-center.gap-3.mt-3.mt-lg-0
+            button.like-button
+              i.far.fa-bell
+            a.btn.btn-outline-secondary.rounded-pill.px-4(href="#") ورود / ثبت نام
+    // Main Content
+    .container.my-4
+      // Breadcrumbs
+      .custom-breadcrumb
+        .breadcrumb-item
+          a(href="#") چند
+        .breadcrumb-item
+          a(href="#") صوتی و تصویری
+        .breadcrumb-item
+          a(href="#") کنسول بازی و لوازم جانبی
+        .breadcrumb-item
+          a(href="#") کنسول بازی
+        .breadcrumb-item
+          a(href="#") پلی استیشن
+        .breadcrumb-item کنسول بازی سونی PlayStation 5 استاندارد
+      // Product Section
+      .row.g-4
+        // Product Images
+        .col-lg-5
+          .product-card.mb-4
+            img.product-main-image.img-fluid(src=ImageFake, alt="PlayStation 5")
+          .d-flex.justify-content-center.gap-2.flex-wrap
+            img.product-thumbnail.active(src="/img/ps5-2.jpg", alt="PS5 View 1")
+            img.product-thumbnail(src="/img/ps5-3.jpg", alt="PS5 View 2")
+            img.product-thumbnail(src="/img/ps5-4.jpg", alt="PS5 View 3")
+            img.product-thumbnail(src="/img/ps5-1.jpg", alt="PS5 View 4")
+        // Product Info
+        .col-lg-7
+          .product-card.p-4.mb-4
+            .d-flex.justify-content-between.align-items-start.mb-3
+              div
+                h1.product-title.mb-1 #{Title}
+                p.product-subtitle PlayStation 5 Disc Edition (Stock)
+              .action-buttons
+                button.like-button
+                  i.far.fa-heart
+                button.like-button
+                  i.fas.fa-share-alt
+            .d-flex.flex-wrap.gap-2.mb-4
+              span.badge.bg-success.py-2.px-3.rounded-pill کارکرده
+              span.badge.bg-info.text-dark.py-2.px-3.rounded-pill
+                i.fas.fa-store.me-1
+                | ۱۵ فروشنده دیگر
+            .alert.d-flex.align-items-center(style="background-color: rgba(255, 71, 87, 0.1); color: var(--torob-primary); border-radius: 12px; border: none;")
+              i.fas.fa-info-circle.me-2
+              span.fw-bold خرید از تهران پی اس
+            .d-flex.justify-content-between.align-items-center.flex-wrap.mt-4
+              .price-tag #{Price} دلار
+              .torob-badge
+                i.fas.fa-shield-alt
+                | ضمانت چند
+          // Price Chart
+          .product-card.p-4
+            .d-flex.justify-content-between.align-items-center.mb-4
+              h5.fw-bold.m-0 نمودار تغییرات قیمت
+              button.like-button
+                i.fas.fa-print
+            .chart-container
+              .chart-placeholder
+                i.far.fa-chart-line
+                p نمودار تغییرات قیمت
+            .d-flex.justify-content-center.gap-4.mt-3
+              .d-flex.align-items-center
+                span(style="display: inline-block; width: 12px; height: 12px; background-color: #38b000; border-radius: 50%; margin-left: 8px;")
+                span(style="font-size: 14px;") بیشترین قیمت
+              .d-flex.align-items-center
+                span(style="display: inline-block; width: 12px; height: 12px; background-color: #3a86ff; border-radius: 50%; margin-left: 8px;")
+                span(style="font-size: 14px;") کمترین قیمت
+      // Sellers Section
+      .mt-5
+        .d-flex.mb-4.gap-2.flex-wrap
+          button.custom-tab.active
+            i.fas.fa-store
+            | فروشنده‌ها
+          button.custom-tab
+            i.fas.fa-info-circle
+            | راهنمای خرید آنلاین
+          button.custom-tab
+            i.fas.fa-list
+            | مشخصات محصول
+        .product-card.p-4
+          .d-flex.flex-wrap.justify-content-between.mb-4.gap-3
+            .d-flex.flex-wrap.gap-3
+              label.d-flex.align-items-center.p-3.rounded-3(style="background-color: var(--torob-light); cursor: pointer;")
+                input.form-check-input.me-2(type="radio", name="purchaseType", checked)
+                i.fas.fa-globe.ms-2(style="color: var(--torob-primary);")
+                span خرید اینترنتی
+              label.d-flex.align-items-center.p-3.rounded-3(style="background-color: var(--torob-light); cursor: pointer;")
+                input.form-check-input.me-2(type="radio", name="purchaseType")
+                i.fas.fa-shopping-bag.ms-2(style="color: var(--torob-primary);")
+                span خرید حضوری
+            .d-flex.flex-wrap.gap-3
+              label.d-flex.align-items-center.p-3.rounded-3(style="background-color: var(--torob-light); cursor: pointer;")
+                input.form-check-input.me-2(type="checkbox")
+                i.fas.fa-map-marker-alt.ms-2(style="color: var(--torob-primary);")
+                span تهران و اطراف
+              label.d-flex.align-items-center.p-3.rounded-3(style="background-color: var(--torob-light); cursor: pointer;")
+                input.form-check-input.me-2(type="checkbox")
+                i.fas.fa-flag.ms-2(style="color: var(--torob-primary);")
+                span تمام ایران
+          // Seller Cards
+          .store-card.p-4
+            .row.align-items-center
+              .col-md-7
+                .d-flex.align-items-center.mb-2
+                  img.store-logo(src="/api/placeholder/40/40", alt="Store Logo")
+                  div
+                    .store-name ضمانت چند
+                h5.fw-bold.mb-2 کنسول بازی PS5 نسخه استاندارد (دیسک خور) استوک
+                .delivery-badge
+                  i.fas.fa-truck
+                  span ۵۴ ساعت با ارسال فوری
+              .col-md-2.text-center.my-3.my-md-0
+                .price-tag ۳۲,۹۹۵,۰۰۰
+                span.badge.mt-2(style="background-color: var(--torob-warning);") آکبند
+              .col-md-3.store-action
+                a.btn.buy-button.w-100.mb-2(href="#")
+                  i.fas.fa-shopping-cart.ms-2
+                  | خرید اینترنتی
+                button.btn.btn-link.w-100.text-muted(style="font-size: 13px;") گزارش قیمت
+          .store-card.p-4
+            .row.align-items-center
+              .col-md-7
+                .d-flex.align-items-center.mb-2
+                  img.store-logo(src="/api/placeholder/40/40", alt="Store Logo")
+                  div
+                    .store-name گیم استاف
+                h5.fw-bold.mb-2 کنسول بازی سونی (استوک) PS5 استاندارد
+                .delivery-badge
+                  i.fas.fa-truck
+                  span ۵۴ ساعت با ارسال فوری
+              .col-md-2.text-center.my-3.my-md-0
+                .price-tag ۳۵,۹۹۹,۰۰۰
+                span.badge.mt-2(style="background-color: var(--torob-warning);") آکبند
+              .col-md-3.store-action
+                a.btn.buy-button.w-100.mb-2(href="#")
+                  i.fas.fa-shopping-cart.ms-2
+                  | خرید اینترنتی
+                button.btn.btn-link.w-100.text-muted(style="font-size: 13px;") گزارش قیمت
+          .store-card.p-4
+            .row.align-items-center
+              .col-md-7
+                .d-flex.align-items-center.mb-2
+                  img.store-logo(src="/api/placeholder/40/40", alt="Store Logo")
+                  div
+                    .store-name تهران پی اس
+                h5.fw-bold.mb-2 کنسول بازی سونی (استوک) PS5 استاندارد
+                .delivery-badge
+                  i.fas.fa-truck
+                  span ۵۴ ساعت با ارسال فوری
+              .col-md-2.text-center.my-3.my-md-0
+                .price-tag ۳۶,۰۰۰,۰۰۰
+              .col-md-3.store-action
+                a.btn.buy-button.w-100.mb-2(href="#")
+                  i.fas.fa-shopping-cart.ms-2
+                  | خرید اینترنتی
+                button.btn.btn-link.w-100.text-muted(style="font-size: 13px;") گزارش قیمت
+      // Specifications
+      .mt-5
+        h4.fw-bold.mb-4 مشخصات محصول
+        .specs-section
+          h5.specs-title مشخصات کلی
+          .specs-row
+            .specs-label دسته بازی
+            .specs-value دسته ps5
+          .specs-row
+            .specs-label CPU
+            .specs-value ۸ هسته‌ای ‫ZEN 2 با فرکانس ۳.۵ گیگاهرتز و قابلیت SMT
+          .specs-row
+            .specs-label GPU
+            .specs-value ۳۶ یونیت با فرکانس ۲.۲۳ گیگاهرتز
