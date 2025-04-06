@@ -1,13 +1,13 @@
 @font-face {
     font-family: 'Vazirmatn';
-    src: url('https://cdnjs.cloudflare.com/ajax/libs/vazirmatn/33.003/Vazirmatn-Regular.woff2') format('woff2');
+    src: url('/public//fonts/Vazir/Vazir.woff2') format('woff2');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Vazirmatn';
-    src: url('https://cdnjs.cloudflare.com/ajax/libs/vazirmatn/33.003/Vazirmatn-Bold.woff2') format('woff2');
+    src: url('/public/fonts/Vazir/Vazir-Bold.woff2') format('woff2');
     font-weight: bold;
     font-style: normal;
 }
@@ -22,7 +22,7 @@
 }
 
 body {
-    font-family: 'Vazirmatn', Tahoma, Arial, sans-serif;
+    font-family: 'Vazirmatn';
     background-color: #F5F7FA;
     color: #2E3A59;
 }
