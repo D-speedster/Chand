@@ -9,7 +9,8 @@ App.get('/', async (req, res) => {
         return product.id == req.query.product;
     });
     let TEST = filteredProducts.map(product => {
-        res.send(`<h1>${product.title}</h1> <h2>${product.id}</h2>`)
+        // res.send(`<h1>${product.title}</h1> <h2>${product.id}</h2>`)
+        res.render('Search');
     });
 
 

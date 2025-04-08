@@ -1,0 +1,673 @@
+meta(charset="UTF-8")
+meta(name="viewport", content="width=device-width,initial-scale=1")
+title فروشگاه آنلاین - محصولات PS5
+style.
+  
+  @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700&display=swap');
+      
+      :root {
+        --primary-color: #e91e63;
+        --secondary-color: #3f51b5;
+        --background-color: #f8f9fa;
+        --card-bg: #ffffff;
+        --text-color: #333333;
+        --border-radius: 12px;
+        --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        --transition: all 0.3s ease;
+      }
+      
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Vazirmatn', sans-serif;
+      }
+      
+      body {
+        background-color: var(--background-color);
+        color: var(--text-color);
+        line-height: 1.6;
+      }
+      html{
+        direction : rtl;
+      }
+      
+      .container {
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 0 16px;
+      }
+      
+      header {
+        background-color: white;
+        box-shadow: var(--shadow);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+      
+      .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 16px 0;
+      }
+      
+      .logo {
+        font-size: 24px;
+        font-weight: 700;
+        color: var(--primary-color);
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      
+      .logo img {
+        width: 40px;
+        height: 40px;
+      }
+      
+      .search-bar {
+        display: flex;
+        align-items: center;
+        background-color: var(--background-color);
+        border-radius: 24px;
+        padding: 8px 16px;
+        width: 100%;
+        max-width: 540px;
+        margin: 0 24px;
+      }
+      
+      .search-bar input {
+        flex: 1;
+        border: none;
+        background: transparent;
+        padding: 8px;
+        font-size: 16px;
+        outline: none;
+      }
+      
+      .search-bar button {
+        background-color: var(--primary-color);
+        color: white;
+        border: none;
+        border-radius: 50%;
+        width: 36px;
+        height: 36px;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: var(--transition);
+      }
+      
+      .search-bar button:hover {
+        background-color: #d81b60;
+      }
+      
+      .user-actions {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
+      
+      .user-btn {
+        background-color: transparent;
+        border: 1px solid #ddd;
+        padding: 8px 12px;
+        border-radius: var(--border-radius);
+        cursor: pointer;
+        font-size: 14px;
+        transition: var(--transition);
+      }
+      
+      .user-btn:hover {
+        border-color: var(--primary-color);
+      }
+      
+      .cart-btn {
+        position: relative;
+        background-color: var(--primary-color);
+        color: white;
+        border: none;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: var(--transition);
+      }
+      
+      .cart-btn span {
+        position: absolute;
+        top: -5px;
+        right: -5px;
+        background-color: var(--secondary-color);
+        color: white;
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 12px;
+      }
+      
+      nav {
+        background-color: white;
+        border-top: 1px solid #eee;
+      }
+      
+      .nav-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        overflow-x: auto;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        padding: 0;
+      }
+      
+      .nav-content::-webkit-scrollbar {
+        display: none;
+      }
+      
+      .nav-links {
+        display: flex;
+        gap: 24px;
+        padding: 12px 0;
+      }
+      
+      .nav-link {
+        color: var(--text-color);
+        text-decoration: none;
+        font-size: 14px;
+        white-space: nowrap;
+        transition: var(--transition);
+      }
+      
+      .nav-link:hover {
+        color: var(--primary-color);
+      }
+      
+      main {
+        padding: 24px 0;
+      }
+      
+      .filters {
+        background-color: white;
+        padding: 16px;
+        border-radius: var(--border-radius);
+        margin-bottom: 24px;
+        box-shadow: var(--shadow);
+      }
+      
+      .filter-options {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        align-items: center;
+      }
+      
+      .filter-group {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      
+      .filter-label {
+        font-size: 14px;
+      }
+      
+      .checkbox-container {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+      }
+      
+      .checkbox-container input {
+        width: 16px;
+        height: 16px;
+      }
+      
+      .location-filter {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-right: auto;
+      }
+      
+      .location-filter i {
+        color: var(--primary-color);
+      }
+      
+      .sort-dropdown {
+        position: relative;
+        cursor: pointer;
+      }
+      
+      .sort-dropdown select {
+        padding: 8px 16px;
+        border-radius: var(--border-radius);
+        border: 1px solid #ddd;
+        background-color: white;
+        appearance: none;
+        font-size: 14px;
+        cursor: pointer;
+        padding-left: 32px;
+      }
+      
+      .products-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 24px;
+      }
+      
+      .product-card {
+        background-color: var(--card-bg);
+        border-radius: var(--border-radius);
+        overflow: hidden;
+        box-shadow: var(--shadow);
+        transition: var(--transition);
+        position: relative;
+      }
+      
+      .product-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+      }
+      
+      .product-badge {
+        position: absolute;
+        top: 16px;
+        right: 16px;
+        background-color: rgba(0, 0, 0, 0.6);
+        color: white;
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-size: 12px;
+      }
+      
+      .product-image {
+        width: 100%;
+        height: 220px;
+        object-fit: contain;
+        background-color: #f5f5f5;
+        padding: 16px;
+      }
+      
+      .product-info {
+        padding: 16px;
+      }
+      
+      .product-title {
+        font-size: 16px;
+        font-weight: 500;
+        margin-bottom: 8px;
+        height: 50px;
+        overflow: hidden;
+      }
+      
+      .product-specs {
+        font-size: 14px;
+        color: #666;
+        margin-bottom: 16px;
+      }
+      
+      .product-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-top: 1px solid #eee;
+        padding-top: 16px;
+      }
+      
+      .product-price {
+        font-size: 16px;
+        font-weight: 700;
+      }
+      
+      .stores-count {
+        font-size: 12px;
+        color: #666;
+      }
+      
+      .product-actions {
+        display: flex;
+        gap: 8px;
+      }
+      
+      .action-btn {
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: var(--transition);
+      }
+      
+      .action-btn:hover {
+        background-color: #f0f0f0;
+      }
+      
+      .action-btn i {
+        font-size: 18px;
+        color: #666;
+      }
+      
+      .sidebar {
+        background-color: white;
+        border-radius: var(--border-radius);
+        padding: 16px;
+        box-shadow: var(--shadow);
+        margin-bottom: 24px;
+      }
+      
+      .sidebar-title {
+        font-size: 16px;
+        font-weight: 500;
+        margin-bottom: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      
+      .sidebar-title i {
+        transition: var(--transition);
+      }
+      
+      .sidebar-title.active i {
+        transform: rotate(180deg);
+      }
+      
+      .brand-search {
+        display: flex;
+        align-items: center;
+        background-color: var(--background-color);
+        border-radius: 8px;
+        padding: 8px;
+        margin-bottom: 16px;
+      }
+      
+      .brand-search input {
+        flex: 1;
+        border: none;
+        background: transparent;
+        padding: 4px;
+        font-size: 14px;
+        outline: none;
+      }
+      
+      .brand-list {
+        list-style: none;
+      }
+      
+      .brand-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 8px 0;
+        cursor: pointer;
+      }
+      
+      .brand-item:hover {
+        color: var(--primary-color);
+      }
+      
+      .price-range {
+        margin-top: 16px;
+      }
+      
+      .price-inputs {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 8px;
+        margin-top: 8px;
+      }
+      
+      .price-inputs input {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        font-size: 14px;
+      }
+      
+      @media (max-width: 768px) {
+        .header-content {
+          flex-direction: column;
+          gap: 16px;
+        }
+        
+        .search-bar {
+          max-width: 100%;
+          margin: 16px 0;
+        }
+        
+        .products-grid {
+          grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+          gap: 16px;
+        }
+        
+        .product-image {
+          height: 180px;
+        }
+        
+        .filter-options {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+        
+        .location-filter {
+          margin-right: 0;
+          margin-top: 8px;
+        }
+      }
+      
+      @media (max-width: 576px) {
+        .products-grid {
+          grid-template-columns: 1fr;
+        }
+        
+        .product-card {
+          display: flex;
+          align-items: center;
+        }
+        
+        .product-image {
+          width: 120px;
+          height: 120px;
+          flex-shrink: 0;
+        }
+        
+        .product-info {
+          flex: 1;
+        }
+      }
+  
+header
+  .container
+    .header-content
+      a.logo(href="#")
+        img(src="/img/LOGO.jpg", alt="لوگو")
+        span جویا
+      .search-bar
+        input(type="text", placeholder="جستجو محصول یا برند...", value="ps5")
+        button
+          i 🔍
+      .user-actions
+        button.user-btn ورود / ثبت نام
+        button.cart-btn
+          i 🛒
+          span 2
+nav
+  .container
+    .nav-content
+      .nav-links
+        a.nav-link(href="#") موبایل و کالای دیجیتال
+        a.nav-link(href="#") لپ‌تاپ، کامپیوتر، اداری
+        a.nav-link(href="#") هایپر مارکت
+        a.nav-link(href="#") لوازم خانگی
+        a.nav-link(href="#") مد و پوشاک
+        a.nav-link(href="#") زیبایی و بهداشت
+        a.nav-link(href="#") صوتی و تصویری
+        a.nav-link(href="#") خودرو و سایر وسایل نقلیه
+        a.nav-link(href="#") ورزش و سرگرمی
+        a.nav-link(href="#") سلامت و پزشکی
+        a.nav-link(href="#") سایر دسته‌ها
+main
+  .container
+    .filters
+      .filter-options
+        .filter-group
+          .checkbox-container
+            input#new(type="checkbox")
+            label.filter-label(for="new") نو
+        .filter-group
+          .checkbox-container
+            input#used(type="checkbox")
+            label.filter-label(for="used") کارکرده
+        .filter-group
+          .checkbox-container
+            input#available(type="checkbox", checked)
+            label.filter-label(for="available") فقط موجودها
+        .sort-dropdown
+          select
+            option مرتب‌سازی
+            option ارزان‌ترین
+            option گران‌ترین
+            option جدیدترین
+        .location-filter
+          i 📍
+          span امکان خرید حضوری
+    div(style="display: flex; gap: 24px; flex-wrap: wrap;")
+      div(style="flex: 1; min-width: 260px;")
+        .sidebar
+          .sidebar-title
+            span انتخاب برند
+            i ▼
+          .brand-search
+            input(type="text", placeholder="جستجوی برند...")
+          ul.brand-list
+            li.brand-item
+              span سونی
+              span Sony
+            li.brand-item
+              span مدل دیگر
+              span Not Detected
+        .sidebar
+          .sidebar-title
+            span دسته‌بندی‌های پیشنهادی
+            i ▼
+          ul.brand-list
+            li.brand-item کنسول بازی PS5
+            li.brand-item کیف و کاور گوشی
+            li.brand-item کتاب صوتی و الکترونیکی
+            li.brand-item کتاب و مجلات
+            li.brand-item محافظ صفحه نمایش گوشی
+            li.brand-item نمایش تمام دسته‌بندی‌ها
+        .sidebar
+          .sidebar-title
+            span قیمت
+            i ▼
+          .price-range
+            .price-inputs
+              input(type="text", placeholder="از")
+              span تا
+              input(type="text", placeholder="تا", value="366,578,931,993,727")
+      div(style="flex: 3;")
+        .products-grid
+          .product-card
+            .product-badge ویژه
+            img.product-image(src="/img/707.png", alt="PS5 Digital")
+            .product-info
+              h3.product-title کنسول بازی سونی PS5 Digital | دیجیتال
+              .product-specs حافظه 2 ترابایت
+              .product-footer
+                div
+                  .product-price از ۳۹,۹۰۰,۰۰۰ تومان
+                  .stores-count در ۱۶۴ فروشگاه
+                .product-actions
+                  button.action-btn
+                    i 🔔
+                  button.action-btn
+                    i ❤️
+          .product-card
+            img.product-image(src="/img/707.png", alt="PS5 Slim")
+            .product-info
+              h3.product-title کنسول بازی سونی PS5 Slim | استاندارد
+              .product-specs 1 ترابایت
+              .product-footer
+                div
+                  .product-price از ۳۶,۰۰۰,۰۰۰ تومان
+                  .stores-count در ۱۷۶ فروشگاه
+                .product-actions
+                  button.action-btn
+                    i 🔔
+                  button.action-btn
+                    i ❤️
+          .product-card
+            img.product-image(src="/img/707.png", alt="PS5 Digital")
+            .product-info
+              h3.product-title کنسول بازی سونی PS5 Digital | به همراه یک دسته اضافه
+              .product-specs 1 ترابایت
+              .product-footer
+                div
+                  .product-price از ۳۰,۴۹۰,۰۰۰ تومان
+                  .stores-count در ۵ فروشگاه
+                .product-actions
+                  button.action-btn
+                    i 🔔
+                  button.action-btn
+                    i ❤️
+          .product-card
+            img.product-image(src="/img/707.png", alt="PS5 Pro")
+            .product-info
+              h3.product-title کنسول بازی سونی PS5 Pro | Digital 30th Anniversary
+              .product-specs حافظه 2 ترابایت
+              .product-footer
+                div
+                  .product-price ۲۷۵,۰۰۰,۰۰۰ تومان
+                  .stores-count در کیش استاف
+                .product-actions
+                  button.action-btn
+                    i 🔔
+                  button.action-btn
+                    i ❤️
+          .product-card
+            .product-badge محدود
+            img.product-image(src="/img/707.png", alt="PS5 Pro")
+            .product-info
+              h3.product-title کنسول بازی سونی PS5 Pro | Digital 30th Anniversary
+              .product-specs حافظه 2 ترابایت
+              .product-footer
+                div
+                  .product-price از ۵۸۹,۰۰۰,۰۰۰ تومان
+                  .stores-count در ۴ فروشگاه
+                .product-actions
+                  button.action-btn
+                    i 🔔
+                  button.action-btn
+                    i ❤️
+          .product-card
+            img.product-image(src="/img/707.png", alt="PS5 Digital")
+            .product-info
+              h3.product-title کنسول بازی سونی PS5 Digital | همراه با دسته اضافی
+              .product-specs حافظه 1 ترابایت
+              .product-footer
+                div
+                  .product-price از ۳۲,۵۰۰,۰۰۰ تومان
+                  .stores-count در ۱۲ فروشگاه
+                .product-actions
+                  button.action-btn
+                    i 🔔
+                  button.action-btn
+                    i ❤️
