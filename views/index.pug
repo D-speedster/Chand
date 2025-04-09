@@ -1,375 +1,387 @@
-meta(charset="UTF-8")
-meta(name="viewport", content="width=device-width,initial-scale=1")
-title موتور جستجوی قیمت - مقایسه قیمت و خرید آنلاین
-style.
-
-
-  :root {
-              --primary: #e62d2d;
-              --primary-light: #ff4949;
-              --secondary: #4caf50;
-              --dark: #333;
-              --light: #f8f8f8;
-              --gray: #eee;
-              --shadow: 0 4px 12px rgba(0,0,0,0.1);
-          }
-       | @font-face { font-family: 'Vazirmatn'; src: url('/fonts/Vazir/Vazir.woff2') format('woff2'); font-weight: normal; font-style: normal; } @font-face { font-family: 'Vazirmatn'; src: url('/fonts/Vazir/Vazir-Bold.woff2') format('woff2'); font-weight: bold; font-style: normal; }
-          * {
-              margin: 0;
-              padding: 0;
-              box-sizing: border-box;
-              font-family: 'Vazirmatn';
-          }
-          
-          body {
-              background-color: white;
-              color: var(--dark);
-              min-height: 100vh;
-              display: flex;
-              flex-direction: column;
-          }
-          
-          .container {
-              max-width: 1200px;
-              margin: 0 auto;
-              padding: 0 15px;
-              width: 100%;
-          }
-          
-          /* Header Styles - Minimal */
-          header {
-              padding: 15px 0;
-          }
-          
-          .top-header {
-              display: flex;
-              justify-content: space-between;
-              align-items: center;
-          }
-          
-          .logo {
-              display: flex;
-              align-items: center;
-          }
-          
-          .logo img {
-              height: 40px;
-          }
-          
-          .auth-buttons {
-              display: flex;
-              gap: 10px;
-          }
-          
-          .auth-buttons button {
-              padding: 8px 16px;
-              border-radius: 20px;
-              border: none;
-              cursor: pointer;
-              transition: all 0.3s ease;
-              font-size: 0.9rem;
-          }
-          
-          .login-btn {
-              background-color: white;
-              color: var(--primary);
-              border: 1px solid var(--primary) !important;
-          }
-          
-          .signup-btn {
-              background-color: var(--primary);
-              color: white;
-          }
-          
-          .auth-buttons button:hover {
-              transform: translateY(-2px);
-              box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-          }
-          
-          /* Main Search Section */
-          .search-section {
-              display: flex;
-              flex-direction: column;
-              align-items: center;
-              justify-content: center;
-              padding: 120px 0;
-              flex-grow: 1;
-          }
-          
-          .search-logo {
-              margin-bottom: 30px;
-              transition: all 0.3s ease;
-          }
-          
-          .search-logo img {
-              height: 80px;
-          }
-          
-          .search-container {
-              position: relative;
-              width: 100%;
-              max-width: 600px;
-              margin-bottom: 20px;
-          }
-          
-          .search-box {
-              width: 100%;
-              padding: 18px 25px;
-              border: none;
-              border-radius: 30px;
-              font-size: 1.1rem;
-              box-shadow: 0 2px 15px rgba(0,0,0,0.1);
-              transition: all 0.3s ease;
-              text-align: right;
-          }
-          
-          .search-box:focus {
-              outline: none;
-              box-shadow: 0 4px 20px rgba(0,0,0,0.15);
-          }
-          
-          .search-btn {
-              position: absolute;
-              left: 10px;
-              top: 50%;
-              transform: translateY(-50%);
-              background-color: var(--primary);
-              color: white;
-              border: none;
-              width: 45px;
-              height: 45px;
-              border-radius: 50%;
-              cursor: pointer;
-              transition: all 0.3s ease;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-          }
-          
-          .search-btn:hover {
-              background-color: var(--primary-light);
-              transform: translateY(-50%) scale(1.05);
-          }
-          
-          .search-options {
-              display: flex;
-              gap: 15px;
-              margin-top: 5px;
-          }
-          
-          .search-option {
-              display: flex;
-              align-items: center;
-              padding: 8px 15px;
-              background-color: var(--light);
-              border-radius: 20px;
-              font-size: 0.85rem;
-              color: #666;
-              cursor: pointer;
-              transition: all 0.3s ease;
-          }
-          
-          .search-option:hover {
-              background-color: var(--gray);
-          }
-          
-          .search-option.active {
-              background-color: rgba(230, 45, 45, 0.1);
-              color: var(--primary);
-          }
-          
-          .search-option svg {
-              margin-left: 5px;
-              width: 16px;
-              height: 16px;
-          }
-          
-          .search-tagline {
-              margin-top: 15px;
-              color: #666;
-              font-size: 0.9rem;
-              text-align: center;
-          }
-          
-          /* Popular Search Terms */
-          .popular-terms {
-              margin-top: 40px;
-              text-align: center;
-          }
-          
-          .popular-terms h3 {
-              font-size: 1rem;
-              color: #666;
-              margin-bottom: 15px;
-              font-weight: normal;
-          }
-          
-          .terms-container {
-              display: flex;
-              flex-wrap: wrap;
-              justify-content: center;
-              gap: 10px;
-          }
-          
-          .term-badge {
-              padding: 8px 15px;
-              background-color: white;
-              border: 1px solid #ddd;
-              border-radius: 20px;
-              font-size: 0.85rem;
-              color: #555;
-              cursor: pointer;
-              transition: all 0.3s ease;
-          }
-          
-          .term-badge:hover {
-              border-color: var(--primary);
-              color: var(--primary);
-              transform: translateY(-2px);
-              box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-          }
-          
-          /* Footer - Minimal */
-          footer {
-              padding: 20px 0;
-              background-color: var(--light);
-              margin-top: auto;
-          }
-          
-          .footer-container {
-              display: flex;
-              justify-content: space-between;
-              align-items: center;
-          }
-          
-          .footer-links {
-              display: flex;
-              gap: 20px;
-          }
-          
-          .footer-links a {
-              color: #666;
-              text-decoration: none;
-              font-size: 0.9rem;
-              transition: color 0.3s ease;
-          }
-          
-          .footer-links a:hover {
-              color: var(--primary);
-          }
-          
-          .copyright {
-              color: #888;
-              font-size: 0.85rem;
-          }
-          
-          /* Responsive */
-          @media (max-width: 768px) {
-              .search-section {
-                  padding: 80px 0;
-              }
-              
-              .search-logo img {
-                  height: 60px;
-              }
-              
-              .footer-container {
-                  flex-direction: column;
-                  gap: 15px;
-              }
-          }
-          
-          @media (max-width: 480px) {
-              .auth-buttons button {
-                  padding: 6px 12px;
-                  font-size: 0.8rem;
-              }
-              
-              .search-section {
-                  padding: 60px 0;
-              }
-              
-              .search-logo img {
-                  height: 50px;
-              }
-              
-              .search-box {
-                  padding: 15px 20px;
-                  font-size: 1rem;
-              }
-              
-              .search-btn {
-                  width: 40px;
-                  height: 40px;
-              }
-          }
-  
-header
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title &#x631;&#x62F;&#x6CC;&#x641; - &#x645;&#x642;&#x627;&#x6CC;&#x633;&#x647; &#x642;&#x6CC;&#x645;&#x62A; &#x645;&#x6CC;&#x644;&#x6CC;&#x648;&#x646;&zwnj;&#x647;&#x627; &#x645;&#x62D;&#x635;&#x648;&#x644;
+  style.
+    @font-face {
+    font-family: 'IRANSans';
+    src: url('https://cdnjs.cloudflare.com/ajax/libs/vazir-font/30.1.0/Vazir-Regular.eot');
+    src: url('https://cdnjs.cloudflare.com/ajax/libs/vazir-font/30.1.0/Vazir-Regular.woff2') format('woff2'),
+    url('https://cdnjs.cloudflare.com/ajax/libs/vazir-font/30.1.0/Vazir-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    }
+    :root {
+    --turquoise-light: #26C6DA;
+    --turquoise-main: #00ACC1;
+    --turquoise-dark: #00838F;
+    --red-light: #EF5350;
+    --red-main: #E53935;
+    --red-dark: #C62828;
+    --bg-light: #f2f3f5;
+    --footer-dark: #333333;
+    }
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'IRANSans', Tahoma, Arial, sans-serif;
+    }
+    body {
+    background-color: var(--bg-light);
+    direction: rtl;
+    }
+    .container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+    }
+    /* هدر سایت */
+    .header {
+    background-color: var(--turquoise-main);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 10px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    color: white;
+    }
+    .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    }
+    /* لوگو و نام در سمت راست */
+    .logo-container {
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+    }
+    .logo {
+    width: 40px;
+    height: 40px;
+    margin-left: 10px;
+    }
+    .site-name {
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    }
+    /* دسته‌بندی‌ها در وسط */
+    .categories {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    flex: 1;
+    }
+    .category-item {
+    padding: 8px 12px;
+    font-size: 14px;
+    color: white;
+    text-decoration: none;
+    white-space: nowrap;
+    }
+    .category-item:hover {
+    color: var(--bg-light);
+    }
+    /* دکمه ثبت نام فروشندگان در سمت چپ */
+    .register-btn {
+    background-color: var(--red-main);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-size: 14px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    white-space: nowrap;
+    }
+    .register-btn:hover {
+    background-color: var(--red-dark);
+    }
+    /* منوی همبرگری */
+    .hamburger-menu {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 20px;
+    cursor: pointer;
+    }
+    .hamburger-menu span {
+    display: block;
+    height: 3px;
+    width: 100%;
+    background-color: white;
+    border-radius: 3px;
+    }
+    /* منوی موبایل */
+    .mobile-menu {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 80%;
+    height: 100vh;
+    background-color: white;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+    z-index: 1001;
+    padding: 20px;
+    overflow-y: auto;
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+    }
+    .mobile-menu.active {
+    transform: translateX(0);
+    }
+    .close-menu {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    font-size: 24px;
+    color: var(--turquoise-main);
+    background: none;
+    border: none;
+    cursor: pointer;
+    }
+    .mobile-menu-categories {
+    display: flex;
+    flex-direction: column;
+    margin-top: 60px;
+    }
+    .mobile-menu-item {
+    padding: 12px 0;
+    border-bottom: 1px solid #eee;
+    color: #333;
+    text-decoration: none;
+    font-size: 16px;
+    }
+    .mobile-menu-item:hover {
+    color: var(--turquoise-main);
+    }
+    .overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    }
+    /* قسمت وسط سایت */
+    .main-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 0;
+    text-align: center;
+    min-height: calc(100vh - 130px);
+    }
+    .apple-logo {
+    width: 100px;
+    margin-bottom: 15px;
+    }
+    .site-title {
+    font-size: 32px;
+    color: var(--turquoise-main);
+    margin-bottom: 30px;
+    }
+    /* باکس جستجو */
+    .search-container {
+    width: 100%;
+    max-width: 600px;
+    margin-bottom: 20px;
+    position: relative;
+    }
+    .search-box {
+    width: 100%;
+    padding: 12px 45px 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    outline: none;
+    }
+    .search-box:focus {
+    border-color: var(--turquoise-main);
+    box-shadow: 0 0 0 3px rgba(0, 172, 193, 0.2);
+    }
+    .search-icon {
+    position: absolute;
+    left: 15px;
+    top: 12px;
+    color: #999;
+    }
+    .camera-icon {
+    position: absolute;
+    right: 15px;
+    top: 12px;
+    color: #999;
+    }
+    .description {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 30px;
+    }
+    /* فوتر */
+    .footer {
+    background-color: var(--footer-dark);
+    padding: 20px 0;
+    color: white;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    }
+    .footer-links {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    }
+    .footer-links a {
+    color: #ddd;
+    font-size: 13px;
+    text-decoration: none;
+    margin: 5px 8px;
+    }
+    .footer-links a:hover {
+    color: var(--turquoise-light);
+    }
+    /* همه‌ی حالت‌های ریسپانسیو */
+    @media (max-width: 992px) {
+    .categories {
+    display: none;
+    }
+    .hamburger-menu {
+    display: flex;
+    order: 1;
+    }
+    .logo-container {
+    order: 2;
+    flex-grow: 1;
+    justify-content: center;
+    margin-left: 0;
+    }
+    .register-btn {
+    order: 3;
+    }
+    .mobile-menu, .overlay {
+    display: block;
+    }
+    }
+    @media (max-width: 768px) {
+    .footer-links {
+    flex-direction: column;
+    align-items: center;
+    }
+    .footer-links div {
+    margin-bottom: 10px;
+    text-align: center;
+    }
+    .search-container {
+    max-width: 90%;
+    }
+    .site-title {
+    font-size: 28px;
+    }
+    }
+    @media (max-width: 576px) {
+    .main-content {
+    padding: 40px 0;
+    }
+    .apple-logo {
+    width: 80px;
+    }
+    .site-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+    }
+    .search-box {
+    padding: 10px 40px 10px 10px;
+    font-size: 14px;
+    }
+    .register-btn {
+    font-size: 12px;
+    padding: 6px 12px;
+    }
+    }
+header.header
   .container
-    .top-header
-      .logo
-        img(src="/img/707.png", alt="لوگو")
-      .auth-buttons
-        button.login-btn ورود
-        button.signup-btn ثبت نام
-main
+    .header-content
+      // منوی همبرگری برای موبایل
+      .hamburger-menu(onclick='toggleMenu()')
+        span
+        span
+        span
+      // لوگو و نام سایت در سمت راست
+      .logo-container
+        img.logo(src='/img/لوگو.png' alt='لوگوی ردیف')
+        span.site-name &#x631;&#x62F;&#x6CC;&#x641;
+      // دسته‌بندی‌ها در وسط - محدود شده به 7 مورد
+      nav.categories
+        a.category-item(href='#') &#x645;&#x648;&#x628;&#x627;&#x6CC;&#x644; &#x648; &#x6A9;&#x627;&#x644;&#x627;&#x6CC; &#x62F;&#x6CC;&#x62C;&#x6CC;&#x62A;&#x627;&#x644;
+        a.category-item(href='#') &#x644;&#x67E;&zwnj;&#x62A;&#x627;&#x67E; &#x648; &#x6A9;&#x627;&#x645;&#x67E;&#x6CC;&#x648;&#x62A;&#x631;
+        a.category-item(href='#') &#x644;&#x648;&#x627;&#x632;&#x645; &#x62E;&#x627;&#x646;&#x6AF;&#x6CC;
+        a.category-item(href='#') &#x645;&#x62F; &#x648; &#x67E;&#x648;&#x634;&#x627;&#x6A9;
+        a.category-item(href='#') &#x632;&#x6CC;&#x628;&#x627;&#x6CC;&#x6CC; &#x648; &#x628;&#x647;&#x62F;&#x627;&#x634;&#x62A;
+        a.category-item(href='#') &#x648;&#x631;&#x632;&#x634; &#x648; &#x633;&#x631;&#x6AF;&#x631;&#x645;&#x6CC;
+        a.category-item(href='#') &#x6A9;&#x648;&#x62F;&#x6A9; &#x648; &#x646;&#x648;&#x632;&#x627;&#x62F;
+      // دکمه ثبت نام فروشندگان در سمت چپ
+      a.register-btn(href='#') &#x62B;&#x628;&#x62A; &#x646;&#x627;&#x645; &#x641;&#x631;&#x648;&#x634;&#x646;&#x62F;&#x6AF;&#x627;&#x646;
+// منوی موبایل
+.mobile-menu
+  button.close-menu(onclick='toggleMenu()') &#x2715;
+  nav.mobile-menu-categories
+    a.mobile-menu-item(href='#') &#x645;&#x648;&#x628;&#x627;&#x6CC;&#x644; &#x648; &#x6A9;&#x627;&#x644;&#x627;&#x6CC; &#x62F;&#x6CC;&#x62C;&#x6CC;&#x62A;&#x627;&#x644;
+    a.mobile-menu-item(href='#') &#x644;&#x67E;&zwnj;&#x62A;&#x627;&#x67E; &#x648; &#x6A9;&#x627;&#x645;&#x67E;&#x6CC;&#x648;&#x62A;&#x631;
+    a.mobile-menu-item(href='#') &#x644;&#x648;&#x627;&#x632;&#x645; &#x62E;&#x627;&#x646;&#x6AF;&#x6CC;
+    a.mobile-menu-item(href='#') &#x645;&#x62F; &#x648; &#x67E;&#x648;&#x634;&#x627;&#x6A9;
+    a.mobile-menu-item(href='#') &#x632;&#x6CC;&#x628;&#x627;&#x6CC;&#x6CC; &#x648; &#x628;&#x647;&#x62F;&#x627;&#x634;&#x62A;
+    a.mobile-menu-item(href='#') &#x648;&#x631;&#x632;&#x634; &#x648; &#x633;&#x631;&#x6AF;&#x631;&#x645;&#x6CC;
+    a.mobile-menu-item(href='#') &#x6A9;&#x648;&#x62F;&#x6A9; &#x648; &#x646;&#x648;&#x632;&#x627;&#x62F;
+    a.mobile-menu-item(href='#') &#x631;&#x627;&#x647;&#x646;&#x645;&#x627;&#x6CC; &#x62E;&#x631;&#x6CC;&#x62F; &#x627;&#x645;&#x646;
+    a.mobile-menu-item(href='#') &#x67E;&#x6CC;&#x6AF;&#x6CC;&#x631;&#x6CC; &#x633;&#x641;&#x627;&#x631;&#x634;
+    a.mobile-menu-item(href='#') &#x67E;&#x634;&#x62A;&#x6CC;&#x628;&#x627;&#x646;&#x6CC;
+    a.mobile-menu-item(href='#') &#x62F;&#x631;&#x628;&#x627;&#x631;&#x647; &#x631;&#x62F;&#x6CC;&#x641;
+// پس‌زمینه تیره هنگام باز شدن منو
+.overlay(onclick='toggleMenu()')
+main.main-content
+  img.apple-logo(src='/img/لوگو.png' alt='لوگوی سیب قرمز')
+  h1.site-title &#x631;&#x62F;&#x6CC;&#x641;
+  form(action="/search" method="GET").search-container
+    input.search-box(type='text' placeholder='نام کالا را وارد کنید' name='product')
+    span.search-icon &#x1F50D;
+    span.camera-icon &#x1F4F7;
+  p.description &#x645;&#x642;&#x627;&#x6CC;&#x633;&#x647; &#x642;&#x6CC;&#x645;&#x62A; &#x645;&#x6CC;&#x644;&#x6CC;&#x648;&#x646;&zwnj;&#x647;&#x627; &#x645;&#x62D;&#x635;&#x648;&#x644; &#x628;&#x6CC;&#x646; &#x647;&#x632;&#x627;&#x631;&#x627;&#x646; &#x641;&#x631;&#x648;&#x634;&#x6AF;&#x627;&#x647;
+footer.footer
   .container
-
-    form(action="/search" method="GET").search-section
-      .search-logo
-        img(src="/img/707.png", alt="لوگوی اصلی")
-      .search-container
-        input.search-box(type="text", placeholder="نام محصول مورد نظر خود را جستجو کنید..." , name="product")
-        button.search-btn
-          svg(width="24", height="24", viewBox="0 0 24 24", fill="none", xmlns="http://www.w3.org/2000/svg")
-            path(d="M11 19C15.4183 19 19 15.4183 19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11C3 15.4183 6.58172 19 11 19Z", stroke="white", stroke-width="2", stroke-linecap="round", stroke-linejoin="round")
-            path(d="M21 21L16.65 16.65", stroke="white", stroke-width="2", stroke-linecap="round", stroke-linejoin="round")
-      .search-options
-        .search-option.active
-          svg(width="16", height="16", viewBox="0 0 24 24", fill="none", xmlns="http://www.w3.org/2000/svg")
-            path(d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z", stroke="currentColor", stroke-width="2", stroke-linecap="round", stroke-linejoin="round")
-            path(d="M12 8V16", stroke="currentColor", stroke-width="2", stroke-linecap="round", stroke-linejoin="round")
-            path(d="M8 12H16", stroke="currentColor", stroke-width="2", stroke-linecap="round", stroke-linejoin="round")
-          | 
-
-
-        .search-option
-          svg(width="16", height="16", viewBox="0 0 24 24", fill="none", xmlns="http://www.w3.org/2000/svg")
-            path(d="M20 21V19C20 17.9391 19.5786 16.9217 18.8284 16.1716C18.0783 15.4214 17.0609 15 16 15H8C6.93913 15 5.92172 15.4214 5.17157 16.1716C4.42143 16.9217 4 17.9391 4 19V21", stroke="currentColor", stroke-width="2", stroke-linecap="round", stroke-linejoin="round")
-            path(d="M12 11C14.2091 11 16 9.20914 16 7C16 4.79086 14.2091 3 12 3C9.79086 3 8 4.79086 8 7C8 9.20914 9.79086 11 12 11Z", stroke="currentColor", stroke-width="2", stroke-linecap="round", stroke-linejoin="round")
-          | 
-
-
-        .search-option
-          svg(width="16", height="16", viewBox="0 0 24 24", fill="none", xmlns="http://www.w3.org/2000/svg")
-            path(d="M9 11L12 14L22 4", stroke="currentColor", stroke-width="2", stroke-linecap="round", stroke-linejoin="round")
-            path(d="M21 12V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H16", stroke="currentColor", stroke-width="2", stroke-linecap="round", stroke-linejoin="round")
-          | 
-
-
-      p.search-tagline مقایسه قیمت میلیون‌ها محصول بین هزاران فروشگاه آنلاین
-      .popular-terms
-        h3 جستجوهای محبوب
-        .terms-container
-          .term-badge گوشی سامسونگ
-          .term-badge لپ‌تاپ گیمینگ
-          .term-badge هدفون بلوتوثی
-          .term-badge یخچال ساید بای ساید
-          .term-badge اپل واچ
-          .term-badge کنسول PS5
-          .term-badge تلویزیون 4K
-          .term-badge ماشین لباسشویی
-footer
-  .container
-    .footer-container
-      .footer-links
-        a(href="#") درباره ما
-        a(href="#") تماس با ما
-        a(href="#") قوانین و مقررات
-        a(href="#") ثبت نام فروشگاه
-        a(href="#") پنل فروشگاه‌ها
-        a(href="#") سوالات متداول
-      .copyright.
-        
-        © تمامی حقوق محفوظ است. ۱۴۰۴
-        
+    .footer-links
+      div
+        a(href='#') &#x631;&#x627;&#x647;&#x646;&#x645;&#x627;&#x6CC; &#x62E;&#x631;&#x6CC;&#x62F; &#x627;&#x645;&#x646;
+        a(href='#') &#x67E;&#x6CC;&#x6AF;&#x6CC;&#x631;&#x6CC; &#x633;&#x641;&#x627;&#x631;&#x634;
+        a(href='#') &#x67E;&#x634;&#x62A;&#x6CC;&#x628;&#x627;&#x646;&#x6CC;
+        a(href='#') &#x62F;&#x631;&#x628;&#x627;&#x631;&#x647; &#x631;&#x62F;&#x6CC;&#x641;
+      div
+        a(href='#') &#x67E;&#x6CC;&#x634;&#x646;&#x647;&#x627;&#x62F; &#x648;&#x6CC;&#x698;&#x647;
+        a(href='#') &#x644;&#x6CC;&#x633;&#x62A; &#x641;&#x631;&#x648;&#x634;&#x6AF;&#x627;&#x647;&zwnj;&#x647;&#x627;
+        a(href='#') &#x62B;&#x628;&#x62A; &#x646;&#x627;&#x645; &#x641;&#x631;&#x648;&#x634;&#x6AF;&#x627;&#x647;
+        a(href='#') &#x67E;&#x646;&#x644; &#x641;&#x631;&#x648;&#x634;&#x6AF;&#x627;&#x647;&zwnj;&#x647;&#x627;
+        a(href='#') &#x641;&#x631;&#x635;&#x62A;&zwnj;&#x647;&#x627;&#x6CC; &#x634;&#x63A;&#x644;&#x6CC;
+        a(href='#') &#x628;&#x644;&#x627;&#x6AF; &#x631;&#x62F;&#x6CC;&#x641;
+script.
+  function toggleMenu() {
+  const mobileMenu = document.querySelector('.mobile-menu');
+  const overlay = document.querySelector('.overlay');
+  mobileMenu.classList.toggle('active');
+  if (mobileMenu.classList.contains('active')) {
+  overlay.style.display = 'block';
+  document.body.style.overflow = 'hidden';
+  } else {
+  overlay.style.display = 'none';
+  document.body.style.overflow = 'auto';
+  }
+  }
