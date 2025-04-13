@@ -1,12 +1,597 @@
-<html lang="en">
+<html lang="en" dir="rtl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>لیست فروشگاه ها</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.rtl.min.css">
 </head>
+<style>
+    :root {
+        --shadow-soft:
+            0 2.8px 2.2px rgba(50, 50, 93, 0.02),
+            0 6.7px 5.3px rgba(50, 50, 93, 0.028),
+            0 12.5px 10px rgba(50, 50, 93, 0.035);
+
+        --shadow-soft-hover:
+            0 8px 25px rgba(50, 50, 93, 0.08),
+            0 4px 12px rgba(0, 0, 0, 0.04);
+    }
+
+    /* فونت ایران سنس */
+    @font-face {
+        font-family: 'IRANSans';
+        src: url('public/fonts/IRANSans/IRANSans.woff2') format('woff2');
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    /* استایل‌های عمومی */
+    body {
+        font-family: 'IRANSans', sans-serif;
+        background-color: #eceff6;
+    }
+
+    .logo-container {
+        display: flex;
+        align-items: center;
+        padding: 5px 0;
+    }
+
+    .logo-image {
+        max-height: 60px;
+        max-width: 180px;
+        object-fit: contain;
+        transition: all 0.3s ease;
+    }
+
+    .navbar .nav-item {
+        margin-left: 10px;
+    }
+
+    /* Custom Header Styles */
+    .navbar {
+        box-shadow: 0 4px 20px rgba(50, 50, 93, 0.08),
+            0 1px 3px rgba(0, 0, 0, 0.04);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 1px solid rgba(236, 239, 246, 0.9);
+    }
+
+    .logo-image {
+        height: 45px;
+        transition: transform 0.3s ease;
+    }
+
+    .logo-image:hover {
+        transform: scale(1.05);
+    }
+
+    .navbar-toggler {
+        border: 1px solid rgba(236, 239, 246, 0.9);
+        padding: 0.5rem 0.75rem;
+        box-shadow: 0 2px 6px rgba(50, 50, 93, 0.05);
+    }
+
+    .navbar-toggler-icon {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(45, 55, 72, 0.8)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    }
+
+    .nav-link {
+        font-weight: 500;
+        color: #2d3748 !important;
+        padding: 0.5rem 1rem !important;
+        margin: 0 0.3rem;
+        border-radius: 8px;
+        transition: all 0.2s ease;
+    }
+
+    .nav-link:hover {
+        background: rgba(236, 239, 246, 0.4);
+        transform: translateY(-1px);
+    }
+
+    .nav-link.active {
+        background: linear-gradient(135deg, #f8f9fa 0%, #eceff6 100%);
+        box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.03);
+    }
+
+    .dropdown-menu {
+        border: none;
+        box-shadow: 0 8px 24px rgba(50, 50, 93, 0.12),
+            0 4px 8px rgba(0, 0, 0, 0.04);
+        border-radius: 12px;
+        margin-top: 0.5rem !important;
+    }
+
+    .dropdown-item {
+        border-radius: 8px;
+        transition: all 0.2s ease;
+    }
+
+    .dropdown-item:hover {
+        background: rgba(236, 239, 246, 0.4);
+        transform: translateX(3px);
+    }
+
+    .btn-danger {
+        background: linear-gradient(135deg, #ff6b6b, #ff4757);
+        border: none;
+        padding: 0.5rem 1.5rem;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(255, 107, 107, 0.2);
+        transition: all 0.3s ease;
+    }
+
+    .btn-danger:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 16px rgba(255, 107, 107, 0.3);
+    }
+
+    /* Offcanvas Styles */
+    .offcanvas {
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(5px);
+    }
+
+    .offcanvas-header {
+        border-bottom: 1px solid rgba(236, 239, 246, 0.9);
+    }
+
+    .offcanvas-body .nav-link {
+        padding: 0.75rem 1.5rem !important;
+        margin: 0.25rem 0;
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 991px) {
+        .navbar-collapse {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(5px);
+            padding: 1rem;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(50, 50, 93, 0.12);
+            margin-top: 0.5rem;
+        }
+    }
+
+    footer {
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(8px);
+        border-top: 1px solid rgba(236, 239, 246, 0.9);
+        box-shadow: 0 -4px 25px rgba(50, 50, 93, 0.06),
+            0 -1px 3px rgba(0, 0, 0, 0.02);
+        padding: 2.5rem 0;
+
+        z-index: 1000;
+    }
+
+    footer::before {
+        content: '';
+        position: absolute;
+        top: -6px;
+        left: 0;
+        right: 0;
+        height: 6px;
+        background: linear-gradient(to bottom,
+                rgba(0, 0, 0, 0.03) 0%,
+                rgba(0, 0, 0, 0) 100%);
+    }
+
+    footer ul {
+        list-style: none;
+        padding-right: 0;
+        margin: 0;
+    }
+
+    footer ul li {
+        margin-bottom: 0.8rem;
+        transition: transform 0.2s ease;
+    }
+
+    footer ul li a {
+        color: #2d3748 !important;
+        text-decoration: none !important;
+        padding: 0.3rem 0;
+        display: inline-block;
+        position: relative;
+    }
+
+    footer ul li a::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 1px;
+        background: #2d3748;
+        transition: width 0.3s ease;
+    }
+
+    footer ul li a:hover::after {
+        width: 100%;
+    }
+
+    footer .fw-bold {
+        font-weight: 600 !important;
+        margin-bottom: 1.2rem;
+        display: inline-block;
+        padding-bottom: 0.5rem;
+        position: relative;
+    }
+
+    footer .fw-bold::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 40%;
+        height: 2px;
+        background: linear-gradient(135deg,
+                rgba(255, 255, 255, 0.98) 0%,
+                rgba(248, 249, 250, 0.98) 100%);
+    }
+
+    footer p {
+        line-height: 1.8;
+        color: #4a5568;
+        font-size: 0.95rem;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 991px) {
+        footer {
+            position: static;
+            padding: 2rem 0;
+        }
+
+        .col-lg-6 .row {
+            align-items: center;
+            text-align: center;
+        }
+
+        footer .col-4 {
+            margin-bottom: 2rem;
+        }
+
+        footer ul {
+            text-align: center !important;
+        }
+
+        footer ul li {
+            margin-bottom: 0.6rem;
+        }
+
+        footer .fw-bold::after {
+            right: 50%;
+            transform: translateX(50%);
+            width: 30%;
+        }
+
+    }
+
+    .Seller-List {
+
+        background-color: #FFFFFF;
+        border-radius: 14px;
+        min-height: 250px;
+        /* ارتفاع رو با نیاز تنظیم کن */
+        padding: 20px;
+        margin-bottom: 25px;
+        box-shadow: var(--shadow-soft);
+        transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        position: relative;
+        overflow: hidden;
+        text-align: center;
+    }
+
+    .seller-item {
+        background-color: #FFFFFF;
+        border-radius: 14px;
+        min-height: 100px;
+        /* ارتفاع رو با نیاز تنظیم کن */
+        padding: 20px;
+        margin-bottom: 25px;
+        box-shadow: var(--shadow-soft);
+        transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        position: relative;
+        overflow: hidden;
+        text-align: center;
+        cursor: pointer;
+    }
+
+    .seller-item .img-container {
+        aspect-ratio: 3/2;
+        background: #fff;
+        border-radius: 10px;
+        padding: 8px;
+        margin-bottom: 15px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .seller-item img {
+        width: 100%;
+        height: 130px;
+        object-fit: scale-down;
+        object-position: center;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .Seller-List .Search-input {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .Search-input input {
+        background-color: #eeee;
+    }
+</style>
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+        <div class="container">
+            <a class="navbar-brand logo-container" href="#">
+                <img src="public/img/707.png" alt="لوگوی سایت" class="img-fluid logo-image">
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
+                aria-controls="offcanvasRight">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <input type="search" class="form-control" placeholder="جستجو کالا  ...">
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">فروشگاه ها</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">تماس با ما</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            دسته بندی کالا
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">کنسول بازی</a></li>
+                            <li><a class="dropdown-item" href="#">لوازم جانبی</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">بازی‌ها</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="ms-3">
+                <button class="btn btn-danger">ثبت فروشگاه</button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+        <div class="offcanvas-header">
+            <h5 id="offcanvasRightLabel">منو</h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">صفحه اصلی</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">تماس با ما</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">دسته بندی کالا</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</header>
+
 <body>
-    
+    <div class="container">
+        <div class="Seller-List my-4">
+            <h4> فروشگاه های ثبت شده در ردیف</h4>
+            <div class="Search-input">
+                <input placeholder="جستجو بین فروشگاه ها  ..." type="text" class="form-control w-50 mx-auto mt-5"
+                    style="color: white !important;" />
+
+            </div>
+
+        </div>
+
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-2">
+            <div class="col">
+                <div class="card seller-item">
+                    <img src="/public/img/digi.jpg" class="card-img-top" alt="...">
+                    <hr style="border: 1px;">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span>دیجی کالا</span>
+                        <span>4.6 / 5</span>
+                      </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card seller-item">
+                    <img src="/public/img/تپسی-شاپ-1-042c8130.jpg" class="card-img-top" alt="...">
+                    <hr style="border: 1px;">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span>تپسی شاپ</span>
+                        <span>4.6 / 5</span>
+                      </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card seller-item">
+                    <img src="/public/img/snappshop_logo.jpg" class="card-img-top" alt="...">
+                    <hr style="border: 1px;">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span>اسنپ شاپ</span>
+                        <span>4.6 / 5</span>
+                      </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card seller-item">
+                    <img src="/public/img/Tecnolife-820x410.png" class="card-img-top" alt="...">
+                    <hr style="border: 1px;">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span>تکنولایف</span>
+                        <span>4.1 / 5</span>
+                      </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card seller-item">
+                    <img src="/public/img/digi.jpg" class="card-img-top" alt="...">
+                    <hr style="border: 1px;">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span>دیجی کالا</span>
+                        <span>4.6 / 5</span>
+                      </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card seller-item">
+                    <img src="/public/img/تپسی-شاپ-1-042c8130.jpg" class="card-img-top" alt="...">
+                    <hr style="border: 1px;">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span>تپسی شاپ</span>
+                        <span>4.6 / 5</span>
+                      </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card seller-item">
+                    <img src="/public/img/snappshop_logo.jpg" class="card-img-top" alt="...">
+                    <hr style="border: 1px;">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span>اسنپ شاپ</span>
+                        <span>4.6 / 5</span>
+                      </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card seller-item">
+                    <img src="/public/img/Tecnolife-820x410.png" class="card-img-top" alt="...">
+                    <hr style="border: 1px;">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span>تکنولایف</span>
+                        <span>4.1 / 5</span>
+                      </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card seller-item">
+                    <img src="/public/img/digi.jpg" class="card-img-top" alt="...">
+                    <hr style="border: 1px;">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span>دیجی کالا</span>
+                        <span>4.6 / 5</span>
+                      </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card seller-item">
+                    <img src="/public/img/تپسی-شاپ-1-042c8130.jpg" class="card-img-top" alt="...">
+                    <hr style="border: 1px;">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span>تپسی شاپ</span>
+                        <span>4.6 / 5</span>
+                      </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card seller-item">
+                    <img src="/public/img/snappshop_logo.jpg" class="card-img-top" alt="...">
+                    <hr style="border: 1px;">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span>اسنپ شاپ</span>
+                        <span>4.6 / 5</span>
+                      </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card seller-item">
+                    <img src="/public/img/Tecnolife-820x410.png" class="card-img-top" alt="...">
+                    <hr style="border: 1px;">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span>تکنولایف</span>
+                        <span>4.1 / 5</span>
+                      </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    </div>
+
+
+
 </body>
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 mb-4 mb-lg-0">
+                <div class="row">
+                    <div class="col-lg-2 col-3">
+                        <img class="img-fluid" src="public/img/707.png" alt="لوگوی ردیف">
+                    </div>
+                    <div class="col-lg-10 col-9">
+                        <p>
+                            ردیف، موتور جستجوی کالای ایرانی، همراه شما در یافتن بهترین و به‌صرفه‌ترین قیمت‌ها از
+                            میان فروشگاه‌های آنلاین معتبر.
+                        </p>
+                        <p>
+                            در ردیف جستجو کنید، مقایسه کنید و هوشمندانه خرید کنید. ما مرجع شما برای انتخابی آگاهانه
+                            در دنیای تجارت الکترونیک ایران هستیم.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="row">
+                    <div class="col-4">
+                        <ul>
+                            <li class="fw-bold">ارتباط</li>
+                            <li><a href="#" class="text-dark text-decoration-none">درباره ما</a></li>
+                            <li><a href="#" class="text-dark text-decoration-none">تماس با ما</a></li>
+                            <li><a href="#" class="text-dark text-decoration-none">پشتیبانی</a></li>
+                            <li><a href="#" class="text-dark text-decoration-none">پیگیری سفارش</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-4">
+                        <ul>
+                            <li class="fw-bold">خدمات کالا</li>
+                            <li><a href="#" class="text-dark text-decoration-none">جستجو کالا</a></li>
+                            <li><a href="#" class="text-dark text-decoration-none">مقایسه کالا</a></li>
+                            <li><a href="#" class="text-dark text-decoration-none">سابقه قیمت</a></li>
+                            <li><a href="#" class="text-dark text-decoration-none">دسته بندی کالا</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-4">
+                        <ul>
+                            <li class="fw-bold">اپلیکیشن</li>
+                            <li><a href="#" class="text-dark text-decoration-none">ویندوز</a></li>
+                            <li><a href="#" class="text-dark text-decoration-none">اندروید</a></li>
+                            <li><a href="#" class="text-dark text-decoration-none">آیفون</a></li>
+                            <li><a href="#" class="text-dark text-decoration-none">مکینتاش</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
 </html>
