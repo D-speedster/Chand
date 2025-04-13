@@ -1,0 +1,188 @@
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title &#x644;&#x6CC;&#x633;&#x62A; &#x641;&#x631;&#x648;&#x634;&#x6AF;&#x627;&#x647; &#x647;&#x627;
+  link(rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.rtl.min.css')
+  link(rel='stylesheet' href='css/index.css')
+header
+  nav.navbar.navbar-expand-lg.navbar-light.bg-white
+    .container
+      a.navbar-brand.logo-container(href='/')
+        img.img-fluid.logo-image(src='img/707.png' alt='لوگوی سایت')
+      button.navbar-toggler(type='button' data-bs-toggle='offcanvas' data-bs-target='#offcanvasRight' aria-controls='offcanvasRight')
+        span.navbar-toggler-icon
+      #navbarSupportedContent.collapse.navbar-collapse
+        ul.navbar-nav.me-auto.mb-2.mb-lg-0
+          li.nav-item
+            input.form-control(type='search' placeholder='جستجو کالا  ...')
+          li.nav-item
+            a.nav-link.active(aria-current='page' href='#') &#x641;&#x631;&#x648;&#x634;&#x6AF;&#x627;&#x647; &#x647;&#x627;
+          li.nav-item
+            a.nav-link(href='#') &#x62A;&#x645;&#x627;&#x633; &#x628;&#x627; &#x645;&#x627;
+          li.nav-item.dropdown
+            a#navbarDropdown.nav-link.dropdown-toggle(href='#' role='button' data-bs-toggle='dropdown' aria-expanded='false')
+              | &#x62F;&#x633;&#x62A;&#x647; &#x628;&#x646;&#x62F;&#x6CC; &#x6A9;&#x627;&#x644;&#x627;
+            ul.dropdown-menu(aria-labelledby='navbarDropdown')
+              li
+                a.dropdown-item(href='#') &#x6A9;&#x646;&#x633;&#x648;&#x644; &#x628;&#x627;&#x632;&#x6CC;
+              li
+                a.dropdown-item(href='#') &#x644;&#x648;&#x627;&#x632;&#x645; &#x62C;&#x627;&#x646;&#x628;&#x6CC;
+              li
+                hr.dropdown-divider
+              li
+                a.dropdown-item(href='#') &#x628;&#x627;&#x632;&#x6CC;&zwnj;&#x647;&#x627;
+      .ms-3
+        button.btn.btn-danger &#x62B;&#x628;&#x62A; &#x641;&#x631;&#x648;&#x634;&#x6AF;&#x627;&#x647;
+  #offcanvasRight.offcanvas.offcanvas-end(tabindex='-1' aria-labelledby='offcanvasRightLabel')
+    .offcanvas-header
+      h5#offcanvasRightLabel &#x645;&#x646;&#x648;
+      button.btn-close.text-reset(type='button' data-bs-dismiss='offcanvas' aria-label='Close')
+    .offcanvas-body
+      ul.navbar-nav
+        li.nav-item
+          a.nav-link.active(href='#') &#x635;&#x641;&#x62D;&#x647; &#x627;&#x635;&#x644;&#x6CC;
+        li.nav-item
+          a.nav-link(href='#') &#x62A;&#x645;&#x627;&#x633; &#x628;&#x627; &#x645;&#x627;
+        li.nav-item
+          a.nav-link(href='#') &#x62F;&#x633;&#x62A;&#x647; &#x628;&#x646;&#x62F;&#x6CC; &#x6A9;&#x627;&#x644;&#x627;
+.container
+  .Seller-List.my-4
+    h4  &#x641;&#x631;&#x648;&#x634;&#x6AF;&#x627;&#x647; &#x647;&#x627;&#x6CC; &#x62B;&#x628;&#x62A; &#x634;&#x62F;&#x647; &#x62F;&#x631; &#x631;&#x62F;&#x6CC;&#x641;
+    .Search-input
+      input.form-control.w-50.mx-auto.mt-5(placeholder='جستجو بین فروشگاه ها  ...' type='text' style='color: white !important;')
+  .row.row-cols-1.row-cols-md-2.row-cols-lg-4.g-2
+    .col
+      .card.seller-item
+        img.card-img-top(src='img/digi.jpg' alt='...')
+        hr(style='border: 1px;')
+        .d-flex.justify-content-between.align-items-center
+          span &#x62F;&#x6CC;&#x62C;&#x6CC; &#x6A9;&#x627;&#x644;&#x627;
+          span 4.6 / 5
+        hr(style='border: 2px solid black;')
+        .d-flex.justify-content-between.align-items-center
+          span(style='font-size: 13px;') &#x641;&#x639;&#x627;&#x644;&#x6CC;&#x62A; : 5 &#x633;&#x627;&#x644;
+          span(style='font-size: 12px;')  &#x646;&#x648;&#x639; &#x641;&#x631;&#x648;&#x634;&#x6AF;&#x627;&#x647; : &#x622;&#x646;&#x644;&#x627;&#x6CC;&#x646;
+    .col
+      .card.seller-item
+        img.card-img-top(src='img/تپسی-شاپ-1-042c8130.jpg' alt='...')
+        hr(style='border: 1px;')
+        .d-flex.justify-content-between.align-items-center
+          span &#x62A;&#x67E;&#x633;&#x6CC; &#x634;&#x627;&#x67E;
+          span 4.6 / 5
+        hr(style='border: 2px solid black;')
+        .d-flex.justify-content-between.align-items-center
+          span(style='font-size: 13px;') &#x641;&#x639;&#x627;&#x644;&#x6CC;&#x62A; : 5 &#x633;&#x627;&#x644;
+          span(style='font-size: 12px;')  &#x646;&#x648;&#x639; &#x641;&#x631;&#x648;&#x634;&#x6AF;&#x627;&#x647; : &#x622;&#x646;&#x644;&#x627;&#x6CC;&#x646;
+    .col
+      .card.seller-item
+        img.card-img-top(src='img/snappshop_logo.jpg' alt='...')
+        hr(style='border: 1px;')
+        .d-flex.justify-content-between.align-items-center
+          span &#x627;&#x633;&#x646;&#x67E; &#x634;&#x627;&#x67E;
+          span 4.6 / 5
+        hr(style='border: 2px solid black;')
+        .d-flex.justify-content-between.align-items-center
+          span(style='font-size: 13px;') &#x641;&#x639;&#x627;&#x644;&#x6CC;&#x62A; : 5 &#x633;&#x627;&#x644;
+          span(style='font-size: 12px;')  &#x646;&#x648;&#x639; &#x641;&#x631;&#x648;&#x634;&#x6AF;&#x627;&#x647; : &#x622;&#x646;&#x644;&#x627;&#x6CC;&#x646;
+    .col
+      .card.seller-item
+        img.card-img-top(src='img/Tecnolife-820x410.png' alt='...')
+        hr(style='border: 1px;')
+        .d-flex.justify-content-between.align-items-center
+          span &#x62A;&#x6A9;&#x646;&#x648;&#x644;&#x627;&#x6CC;&#x641;
+          span 4.1 / 5
+        hr(style='border: 2px solid black;')
+        .d-flex.justify-content-between.align-items-center
+          span(style='font-size: 13px;') &#x641;&#x639;&#x627;&#x644;&#x6CC;&#x62A; : 5 &#x633;&#x627;&#x644;
+          span(style='font-size: 12px;')  &#x646;&#x648;&#x639; &#x641;&#x631;&#x648;&#x634;&#x6AF;&#x627;&#x647; : &#x622;&#x646;&#x644;&#x627;&#x6CC;&#x646;
+    .col
+      .card.seller-item
+        img.card-img-top(src='img/digi.jpg' alt='...')
+        hr(style='border: 1px;')
+        .d-flex.justify-content-between.align-items-center
+          span &#x62F;&#x6CC;&#x62C;&#x6CC; &#x6A9;&#x627;&#x644;&#x627;
+          span 4.6 / 5
+        hr(style='border: 2px solid black;')
+        .d-flex.justify-content-between.align-items-center
+          span(style='font-size: 13px;') &#x641;&#x639;&#x627;&#x644;&#x6CC;&#x62A; : 5 &#x633;&#x627;&#x644;
+          span(style='font-size: 12px;')  &#x646;&#x648;&#x639; &#x641;&#x631;&#x648;&#x634;&#x6AF;&#x627;&#x647; : &#x622;&#x646;&#x644;&#x627;&#x6CC;&#x646;
+    .col
+      .card.seller-item
+        img.card-img-top(src='img/تپسی-شاپ-1-042c8130.jpg' alt='...')
+        hr(style='border: 1px;')
+        .d-flex.justify-content-between.align-items-center
+          span &#x62A;&#x67E;&#x633;&#x6CC; &#x634;&#x627;&#x67E;
+          span 4.6 / 5
+        hr(style='border: 2px solid black;')
+        .d-flex.justify-content-between.align-items-center
+          span(style='font-size: 13px;') &#x641;&#x639;&#x627;&#x644;&#x6CC;&#x62A; : 5 &#x633;&#x627;&#x644;
+          span(style='font-size: 12px;')  &#x646;&#x648;&#x639; &#x641;&#x631;&#x648;&#x634;&#x6AF;&#x627;&#x647; : &#x622;&#x646;&#x644;&#x627;&#x6CC;&#x646;
+    .col
+      .card.seller-item
+        img.card-img-top(src='img/snappshop_logo.jpg' alt='...')
+        hr(style='border: 1px;')
+        .d-flex.justify-content-between.align-items-center
+          span &#x627;&#x633;&#x646;&#x67E; &#x634;&#x627;&#x67E;
+          span 4.6 / 5
+        hr(style='border: 2px solid black;')
+        .d-flex.justify-content-between.align-items-center
+          span(style='font-size: 13px;') &#x641;&#x639;&#x627;&#x644;&#x6CC;&#x62A; : 5 &#x633;&#x627;&#x644;
+          span(style='font-size: 12px;')  &#x646;&#x648;&#x639; &#x641;&#x631;&#x648;&#x634;&#x6AF;&#x627;&#x647; : &#x622;&#x646;&#x644;&#x627;&#x6CC;&#x646;
+    .col
+      .card.seller-item
+        img.card-img-top(src='img/Tecnolife-820x410.png' alt='...')
+        hr(style='border: 1px;')
+        .d-flex.justify-content-between.align-items-center
+          span &#x62A;&#x6A9;&#x646;&#x648;&#x644;&#x627;&#x6CC;&#x641;
+          span 4.1 / 5
+        hr(style='border: 2px solid black;')
+        .d-flex.justify-content-between.align-items-center
+          span(style='font-size: 13px;') &#x641;&#x639;&#x627;&#x644;&#x6CC;&#x62A; : 5 &#x633;&#x627;&#x644;
+          span(style='font-size: 12px;')  &#x646;&#x648;&#x639; &#x641;&#x631;&#x648;&#x634;&#x6AF;&#x627;&#x647; : &#x622;&#x646;&#x644;&#x627;&#x6CC;&#x646;
+    .col
+      .card.seller-item
+        img.card-img-top(src='img/digi.jpg' alt='...')
+        hr(style='border: 1px;')
+        .d-flex.justify-content-between.align-items-center
+          span &#x62F;&#x6CC;&#x62C;&#x6CC; &#x6A9;&#x627;&#x644;&#x627;
+          span 4.6 / 5
+        hr(style='border: 2px solid black;')
+        .d-flex.justify-content-between.align-items-center
+          span(style='font-size: 13px;') &#x641;&#x639;&#x627;&#x644;&#x6CC;&#x62A; : 5 &#x633;&#x627;&#x644;
+          span(style='font-size: 12px;')  &#x646;&#x648;&#x639; &#x641;&#x631;&#x648;&#x634;&#x6AF;&#x627;&#x647; : &#x622;&#x646;&#x644;&#x627;&#x6CC;&#x646;
+    .col
+      .card.seller-item
+        img.card-img-top(src='img/تپسی-شاپ-1-042c8130.jpg' alt='...')
+        hr(style='border: 1px;')
+        .d-flex.justify-content-between.align-items-center
+          span &#x62A;&#x67E;&#x633;&#x6CC; &#x634;&#x627;&#x67E;
+          span 4.6 / 5
+        hr(style='border: 2px solid black;')
+        .d-flex.justify-content-between.align-items-center
+          span(style='font-size: 13px;') &#x641;&#x639;&#x627;&#x644;&#x6CC;&#x62A; : 5 &#x633;&#x627;&#x644;
+          span(style='font-size: 12px;')  &#x646;&#x648;&#x639; &#x641;&#x631;&#x648;&#x634;&#x6AF;&#x627;&#x647; : &#x622;&#x646;&#x644;&#x627;&#x6CC;&#x646;
+    .col
+      .card.seller-item
+        img.card-img-top(src='img/snappshop_logo.jpg' alt='...')
+        hr(style='border: 1px;')
+        .d-flex.justify-content-between.align-items-center
+          span &#x627;&#x633;&#x646;&#x67E; &#x634;&#x627;&#x67E;
+          span 4.6 / 5
+        hr(style='border: 2px solid black;')
+        .d-flex.justify-content-between.align-items-center
+          span(style='font-size: 13px;') &#x641;&#x639;&#x627;&#x644;&#x6CC;&#x62A; : 5 &#x633;&#x627;&#x644;
+          span(style='font-size: 12px;')  &#x646;&#x648;&#x639; &#x641;&#x631;&#x648;&#x634;&#x6AF;&#x627;&#x647; : &#x622;&#x646;&#x644;&#x627;&#x6CC;&#x646;
+    .col
+      .card.seller-item
+        img.card-img-top(src='img/Tecnolife-820x410.png' alt='...')
+        hr(style='border: 1px;')
+        .d-flex.justify-content-between.align-items-center
+          span &#x62A;&#x6A9;&#x646;&#x648;&#x644;&#x627;&#x6CC;&#x641;
+          span 4.1 / 5
+        hr(style='border: 2px solid black;')
+        .d-flex.justify-content-between.align-items-center
+          span(style='font-size: 13px;') &#x641;&#x639;&#x627;&#x644;&#x6CC;&#x62A; : 5 &#x633;&#x627;&#x644;
+          span(style='font-size: 12px;')  &#x646;&#x648;&#x639; &#x641;&#x631;&#x648;&#x634;&#x6AF;&#x627;&#x647; : &#x622;&#x646;&#x644;&#x627;&#x6CC;&#x646;
+
+include partials/footer
+script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js')
